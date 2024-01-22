@@ -1,0 +1,114 @@
+﻿<Controls:MetroWindow x:Class="KikBot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:KikBot"
+        mc:Ignorable="d"
+        Title="KiK Bot for Plasa Emanuel" Height="480" Width="600" ShowMinButton="False" ShowMaxRestoreButton="False" ResizeMode="NoResize" Loaded="MetroWindow_Loaded" Icon="kik-Messenger.ico" EnableDWMDropShadow = "true" Closing="MetroWindow_Closing">
+    <Grid>
+        <ToggleButton x:Name="toggleButton"
+              Margin="168,98,167,98"
+              Style="{DynamicResource MetroCircleToggleButtonStyle}" Checked="toggleButton_Checked" Unchecked="toggleButton_Unchecked">
+            <Rectangle Width="64"
+               Height="64"
+               Fill="{DynamicResource BlackBrush}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+                         Visual="{DynamicResource appbar_switch_off}"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </ToggleButton>
+        <Button x:Name="button" Content="" HorizontalAlignment="Left" Margin="328,409,0,0" VerticalAlignment="Top" Height="32" Width="256" Click="button_Click" Style="{StaticResource AccentedSquareButtonStyle}"/>
+        <Label x:Name="label" Content="Start Service" HorizontalAlignment="Left" Margin="270,72,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonr" Width="64"
+                        Height="64"
+                        Style="{DynamicResource MetroCircleButtonStyle}" Margin="259,387,271,0" Click="buttonr_Click">
+            <Rectangle Width="32"
+                               Height="32"
+                               Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+                                         Visual="{DynamicResource appbar_refresh}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+        <Button x:Name="buttone" Content="Exit Bluestacks completely" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="256
+                " Click="buttone_Click" Style="{StaticResource AccentedSquareButtonStyle}"/>
+
+    </Grid>
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Controls:Flyout x:Name="flyout_s" Header="Settings" Position="Right" Width="600" IsModal="True" Theme="Accent">
+                <local:Settings Margin="0,0,0,0"/>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="flyout_h" Header="Help" Position="Right" Width="600" IsModal="True" Theme="Accent">
+                    <Label x:Name="labelh" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top">
+                    <TextBlock>To assign hot keys for text and pictures, use Settings.<LineBreak/>Symbols and upper case character are not supported by custom autotyping.<LineBreak/>The shortcut F5 is used for blocking current chatter.<LineBreak/>Press F1 to autotype "Hi"<LineBreak/>Press F7 to autotype "ramonacruels@yahoo.com"<LineBreak/>Bluestacks must be in landscape mode and in fullscreen in order for the bot to work.<LineBreak/>Do not use the bot when Bluestacks is not running, as this may cause instability.<LineBreak/> Make sure that you quit Bluestacks using the button found in home.</TextBlock>
+                    </Label>
+            </Controls:Flyout>
+            <Controls:Flyout x:Name="flyout_a" Header="About" Position="Right" Width="600" IsModal="True" Theme="Accent">
+                <Grid>
+                <Label x:Name="labela" HorizontalAlignment="Left" Margin="0,72,0,0" VerticalAlignment="Top">
+                    <TextBlock>This bot is created specially for Plasa Emanuel by zeezooX. Copyright ©  2016 zeezooX.<LineBreak/> If you want any kind of software to be done, hire zeezooX at Freelancers or at KiK ID (zee_zoo_X)</TextBlock>
+                </Label>
+                <Button x:Name="buttona" Content="Hire me!" HorizontalAlignment="Left" Margin="0,120,0,0" VerticalAlignment="Top" Height="32" Width="256" Click="buttona_Click" Style="{StaticResource AccentedSquareButtonStyle}"/>
+            </Grid>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Click="button_s_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+                         Visual="{StaticResource appbar_settings}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="Settings" />
+                </StackPanel>
+            </Button>
+            <Button Click="button_h_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+                         Visual="{StaticResource appbar_question}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="Help" />
+                </StackPanel>
+            </Button>
+            <Button Click="button_a_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+                         Visual="{StaticResource appbar_information}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="About" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+</Controls:MetroWindow>
